@@ -8,7 +8,6 @@ Test the logger module.
 import logging
 import re
 
-
 from joblib.logger import Logger, PrintTime
 
 
@@ -29,6 +28,8 @@ def test_print_time(tmpdir, capsys):
     match = r"Foo: 0\..s, 0\..min\nFoo: 0\..s, 0..min\nFoo: " + r".\..s, 0..min\n"
     if not re.match(match, err_printed_text):
         raise AssertionError("Excepted %s, got %s" % (match, err_printed_text))
+
+
 def test_logger_info_uses_named_logger(caplog):
     caplog.set_level(logging.INFO)
     caplog.set_level(logging.INFO, logger="pipeline")
